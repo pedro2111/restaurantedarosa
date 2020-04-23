@@ -26,7 +26,7 @@ export class HomeBoletoComponent implements OnInit {
   totalAvencer = 0;
   totalVencidoHoje = 0;
   filtro: string;
-
+  p;
   ngOnInit() {
     this.listar();
     this.listarAVencer();
