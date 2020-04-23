@@ -1,0 +1,58 @@
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 *ngIf="!categoria.id">Nova Categoria</h1>
+              <h1 *ngIf="categoria.id">Atualizar Categoria</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#" [routerLink]="['/,']" >Dashboard</a></li>
+                <li class="breadcrumb-item active" *ngIf="!categoria.id">Nova Categoria</li>
+                <li class="breadcrumb-item active" *ngIf="categoria.id">Atualizar Categoria</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+  
+        <div class="card card-info">
+            <div class="card-header">
+              <h3 class="card-title">Nova</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form novalidate [formGroup]="formulario" (submit)="cadastrar()">
+              <div class="card-body">
+                <div class="form-group">
+                  <label [ngClass]="{'text-danger': !formulario.controls['nome'].valid && formulario.controls['nome'].touched}">Nome</label>
+                  <input type="text" 
+                  formControlName="nome" 
+                  class="form-control" 
+                  [ngClass]="{'is-invalid': !formulario.controls['nome'].valid && formulario.controls['nome'].touched}"
+                  placeholder="Nome da Categoria">
+                </div>
+                <div *ngIf="!formulario.controls['nome'].valid && formulario.controls['nome'].touched">
+                    <p class="text-danger" >Nome deve ser preenchido!</p>
+                    
+                </div>
+                
+              </div>
+
+              <div class="card-footer">
+                <button *ngIf="!categoria.id" type="submit" class="btn btn-info" [disabled]="!formulario.valid">Cadastrar!</button>
+                <button *ngIf="categoria.id" type="submit" class="btn btn-info" [disabled]="!formulario.valid">Atualizar!</button>
+              </div>
+            </form>
+          </div>
+  
+      </section>
+
+      <notifier-container></notifier-container>
+      <!-- /.content -->
+      

@@ -24,9 +24,35 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "src/assets/plugins/fontawesome-free/css/all.min.css",
+              "src/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css",
+              "src/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+              "src/assets/plugins/jqvmap/jqvmap.min.css",
+              "src/assets/dist/css/adminlte.min.css",
+              "src/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+              "src/assets/plugins/daterangepicker/daterangepicker.css",
+              "src/assets/plugins/summernote/summernote-bs4.css",
+              "src/assets/plugins/pace-progress/themes/black/pace-theme-flat-top.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/chart.js",
+              "src/assets/plugins/jquery/jquery.min.js",
+              "src/assets/plugins/jquery-ui/jquery-ui.min.js",
+              "src/assets/plugins/bootstrap/js/bootstrap.bundle.min.js",
+              "src/assets/plugins/sparklines/sparkline.js",
+              "src/assets/plugins/jquery-knob/jquery.knob.min.js",
+              "src/assets/plugins/moment/moment.min.js",
+              "src/assets/plugins/daterangepicker/daterangepicker.js",
+              "src/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+              "src/assets/plugins/summernote/summernote-bs4.min.js",
+              "src/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+              "src/assets/dist/js/adminlte.js",
+              "src/assets/dist/js/pages/dashboard.js",
+              "src/assets/dist/js/demo.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -120,6 +146,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "cozinha-da-rosa"
 }

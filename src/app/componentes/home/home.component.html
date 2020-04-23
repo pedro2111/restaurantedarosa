@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-danger">
+        <div class="inner">
+          <h3>{{totalVencidoHoje}}</h3>
+
+          <p>Boletos vencendo Hoje</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <a [routerLink]="['boletos']" class="small-box-footer">Mais Informações<i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+      <!-- small box -->
+      <div class="small-box bg-warning">
+        <div class="inner">
+          <h3>{{totalAVencer}}</h3>
+
+          <p>Boaletos à vencer</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <a [routerLink]="['boletos']" class="small-box-footer">Mais Informações <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-gray-dark">
+          <div class="inner">
+            <h3>{{totalVencido}}</h3>
+  
+            <p>Boaletos vencidos</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a [routerLink]="['boletos']" class="small-box-footer">Mais Informações <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{totalPago}}</h3>
+  
+            <p>Boletos Pagos</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a [routerLink]="['boletos']" class="small-box-footer">Mais Informações<i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+    <!-- ./col -->
+  </div>
+
+  <div class="card" style="position: relative; left: 0px; top: 0px;" *ngIf="dataMesAno.length > 0">
+    <div class="card-header ui-sortable-handle" style="cursor: move;">
+      <h3 class="card-title">
+        <i class="fas fa-chart-pie mr-1"></i>
+        Total mensal Boletos
+      </h3>
+      <div class="card-tools">
+        <ul class="nav nav-pills ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active">Barra</a>
+          </li>
+          <!--
+          <li class="nav-item">
+            <a class="nav-link" href="#bar" data-toggle="tab">Linha</a>
+          </li>
+        -->
+        </ul>
+      </div>
+    </div><!-- /.card-header -->
+    <div class="card-body">
+      <div class="tab-content p-0">
+        <!-- Morris chart - Sales -->
+        <div class="chart tab-pane active" id="line-bar" style="position: relative;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+        <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+        [colors]="barChartColors"
+        >
+        </canvas>
+         </div>
+
+      </div>
+    </div><!-- /.card-body -->
+  </div>

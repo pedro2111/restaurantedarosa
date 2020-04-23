@@ -1,0 +1,8 @@
+.todo-list >li .tools{
+    color: green;
+}
+.minHeight{
+    min-height: 123px;
+    max-height: 200px;
+    overflow: auto;
+}

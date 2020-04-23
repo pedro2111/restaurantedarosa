@@ -1,0 +1,174 @@
+<div class="row">
+  <div class="col-md-4">
+    <!-- Widget: user widget style 2 -->
+    <div class="card card-widget widget-user-2">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-danger">
+        <!-- /.widget-user-image -->
+        <h3 class="widget-user-username">Vencendo hoje</h3>
+
+      </div>
+      <div class="card-footer p-0 minHeight">
+        <ul class="nav flex-column">
+          <li class="nav-item border-bottom" *ngFor="let vh of vencidosHoje">
+            <a class="nav-link">
+              {{(vh.nome.length>18)? (vh.nome | slice:0:20)+'...': (vh.nome)}} <span
+                class="float-right badge bg-danger">R$ {{vh.valor}}</span><span
+                class="float-right badge bg-info mr-1">{{vh.dtVencimento | date: 'dd/MM/yyyy'}}</span>
+            </a>
+          </li>
+          <li class="nav-item pt-5 pl-1" *ngIf="vencidosHoje.length == 0">
+            <a class="nav-link">
+              <span class="font-weight-bold">Não existem boletos vencendo hoje!</span>
+            </a>
+          </li>
+          <li class="nav-item border-bottom" *ngIf="vencidosHoje.length != 0">
+            <a class="nav-link font-weight-bold">
+              Valor Total <span class="float-right badge bg-olive">R$ {{totalVencidoHoje}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.widget-user -->
+  </div>
+  <div class="col-md-4">
+    <!-- Widget: user widget style 2 -->
+    <div class="card card-widget widget-user-2">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-warning">
+        <!-- /.widget-user-image -->
+        <h3 class="widget-user-username">À Vencer</h3>
+
+      </div>
+      <div class="card-footer p-0 minHeight">
+        <ul class="nav flex-column">
+          <li class="nav-item border-bottom" *ngFor="let av of aVencer">
+            <a class="nav-link">
+              {{(av.nome.length>18)? (av.nome | slice:0:20)+'...': (av.nome)}} <span
+                class="float-right badge bg-danger">R$ {{av.valor}}</span><span
+                class="float-right badge bg-info mr-1">{{av.dtVencimento | date: 'dd/MM/yyyy'}}</span>
+            </a>
+          </li>
+          <li class="nav-item pt-5 pl-1" *ngIf="aVencer.length == 0">
+            <a class="nav-link">
+              <span class="font-weight-bold">Não existem à vencer!</span>
+            </a>
+          </li>
+          <li class="nav-item border-bottom" *ngIf="aVencer.length != 0">
+            <a class="nav-link font-weight-bold">
+              Valor Total <span class="float-right badge bg-olive">R$ {{totalAvencer}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.widget-user -->
+  </div>
+  <div class="col-md-4">
+    <!-- Widget: user widget style 2 -->
+    <div class="card card-widget widget-user-2">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-gray-dark">
+        <!-- /.widget-user-image -->
+        <h3 class="widget-user-username">Boletos Vencidos</h3>
+
+      </div>
+      <div class="card-footer p-0 minHeight">
+        <ul class="nav flex-column">
+          <li class="nav-item border-bottom" *ngFor="let v of vencidos">
+            <a class="nav-link">
+              {{(v.nome.length>18)? (v.nome | slice:0:20)+'...': (v.nome)}} <span class="float-right badge bg-danger">R$
+                {{v.valor}}</span><span
+                class="float-right badge bg-info mr-1">{{v.dtVencimento | date: 'dd/MM/yyyy'}}</span>
+            </a>
+          </li>
+          <li class="nav-item pt-5 pl-1" *ngIf="vencidos.length == 0">
+            <a class="nav-link">
+              <span class="font-weight-bold">Não existem vencidos!</span>
+            </a>
+          </li>
+          <li class="nav-item border-bottom" *ngIf="vencidos.length != 0">
+            <a class="nav-link font-weight-bold">
+              Valor Total <span class="float-right badge bg-olive">R$ {{totalVencido}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.widget-user -->
+  </div>
+  <!-- /.col -->
+
+
+  <!-- /.col -->
+</div>
+
+<div class="card">
+  <div class="card-header ui-sortable-handle" style="cursor: move;">
+    <h3 class="card-title">
+      <i class="ion ion-clipboard mr-1"></i>
+      Últimos Boletos
+    </h3>
+
+    <div class="card-tools">
+      <pagination-controls class="pagination pagination-sm no-margin pull-right" (pageChange)="p = $event"
+        previousLabel="Anterior" nextLabel="Próximo">
+      </pagination-controls>
+    </div>
+
+    <div class="card-tools mr-2">
+      <div class="input-group input-group-sm" >
+        <input 
+        type="text" 
+        name="table_search" 
+        class="form-control float-right" 
+        placeholder="Search"
+        [(ngModel)]="filtro"
+        >
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <ul class="todo-list ui-sortable" data-widget="todo-list">
+      <li *ngFor="let b of filtroBoletos() | paginate: { itemsPerPage: 10, currentPage: p }"
+        [ngClass]="{'done': b.status == 'PAGO'}">
+        <!-- drag handle -->
+        <span class="handle ui-sortable-handle">
+          <i class="fas fa-ellipsis-v"></i>
+          <i class="fas fa-ellipsis-v"></i>
+        </span>
+        <!-- todo text -->
+        <span class="text">Fornecedor: {{b.nomeFornecedor}} | Boleto: {{b.nome}} | valor: R$ {{b.valor}}</span>
+        <!-- Emphasis label -->
+        <small class="badge badge-secondary disabled" *ngIf="b.diff > 0"><i class="far fa-clock"></i>
+          {{b.dtVencimento | date: 'dd/MM/yyyy'}}</small>
+        <small class="badge badge-warning" *ngIf="b.diff > 0"><i class="far fa-clock"></i> Faltam {{b.diff}} dias para
+          vencer</small>
+        <small class="badge badge-danger" *ngIf="b.diff == 0"><i class="far fa-clock"></i> Vence Hoje!!</small>
+        <small class="badge badge-dark" *ngIf="b.diff < 0"><i class="far fa-clock"></i> Vencido! </small>
+        <!-- General tools such as edit or delete-->
+        <div class="tools" *ngIf="b.status != 'PAGO' ">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-success" (click)="pagar(b.id)">Pagar</button>
+          </div>
+        </div>
+        <div class="tools">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-info mr-1" (click)="editar(b.id)">Editar</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer clearfix">
+  </div>
+</div>
+
+<notifier-container></notifier-container>

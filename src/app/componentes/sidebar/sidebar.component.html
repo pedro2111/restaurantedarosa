@@ -1,0 +1,208 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Cozinha da Rosa</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <!--
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v1</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v3</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        -->
+        <!--
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Widgets
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+        -->
+          <li class="nav-item has-treeview">
+            <a class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Boletos
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a [routerLink]="['boletos']" class="nav-link">
+                  <i class="fa fa-home nav-icon"></i>
+                  <p>Boletos Home</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['boletos/novo']" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Novo Boleto</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['boletos/calendario']" class="nav-link">
+                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <p>Calendário</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Fiados
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="fa fa-home nav-icon"></i>
+                  <p>Fiados Home</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Novo Fiado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/boxed.html" class="nav-link">
+                  <i class="nav-icon fa fa-chart-pie"></i>
+                  <p>Relatório</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-project-diagram"></i>
+              <p>
+                Fluxo de caixa
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  <i class="fa fa-home nav-icon"></i>
+                  <p>Fluxo Home</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Novo Fluxo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/boxed.html" class="nav-link">
+                  <i class="nav-icon fa fa-box-open"></i>
+                  <p>Abri caixa</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/layout/boxed.html" class="nav-link">
+                  <i class="nav-icon fa fa-chart-pie"></i>
+                  <p>Relatório</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="" class="nav-link" >
+              <i class="nav-icon fas fa-truck"></i>
+              <p>
+                Fornecedores
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" [routerLink]="['/dashboard/fornecedores']" class="nav-link">
+                  <i class="fa fa-home nav-icon"></i>
+                  <p>Fornecedores Home</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" [routerLink]="['/dashboard/fornecedores/novo']" class="nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Novo Fornecedor</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a  class=" pointer nav-link">
+              <i class="nav-icon fas fa-bars"></i>
+              <p>
+                Categorias
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  class="pointer nav-link" [routerLink]="['/dashboard/categorias']">
+                  <i class="fa fa-home nav-icon"></i>
+                  <p>Categorias Home</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['/dashboard/categorias/nova']" class=" pointer nav-link">
+                  <i class="fa fa-plus nav-icon"></i>
+                  <p>Nova Categoria</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

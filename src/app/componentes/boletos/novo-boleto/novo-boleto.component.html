@@ -1,0 +1,100 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 *ngIf="!boleto.id">Novo Boleto</h1>
+                <h1 *ngIf="boleto.id">Atualizar Boleto</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#" [routerLink]="['/,']">Dashboard</a></li>
+                    <li class="breadcrumb-item active" *ngIf="!boleto.id">Novo Boleto</li>
+                    <li class="breadcrumb-item active" *ngIf="boleto.id">Atualizar Boleto</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">Novo</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form novalidate [formGroup]="formulario" (submit)="cadastrar()">
+            <div class="card-body">
+                <div class="form-group">
+                    <label
+                        [ngClass]="{'text-danger': !formulario.controls['nome'].valid && formulario.controls['nome'].touched}">Nome</label>
+                    <input type="text" formControlName="nome" class="form-control"
+                        [ngClass]="{'is-invalid': !formulario.controls['nome'].valid && formulario.controls['nome'].touched}"
+                        placeholder="Nome do Boleto">
+                </div>
+                <div *ngIf="!formulario.controls['nome'].valid && formulario.controls['nome'].touched">
+                    <p class="text-danger">Nome deve ser preenchido!</p>
+                </div>
+
+                <div class="form-group">
+                    <label
+                        [ngClass]="{'text-danger': !formulario.controls['valor'].valid && formulario.controls['valor'].touched}">Valor</label>
+                    <input type="text" formControlName="valor" class="form-control"
+                        [ngClass]="{'is-invalid': !formulario.controls['valor'].valid && formulario.controls['valor'].touched}"
+                        placeholder="Valor do Boleto" currencyMask>
+                </div>
+                <div *ngIf="!formulario.controls['valor'].valid && formulario.controls['valor'].touched">
+                    <p class="text-danger">Valor deve ser preenchido!</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Data de Vencimento:</label>
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input type="text" class="form-control" formControlName="dtVencimento" bsDatepicker
+                            [bsConfig]="datePickerConfig">
+
+                    </div>
+                    <!-- /.input group -->
+                </div>
+
+                <div class="form-group">
+                    <label>Fornecedor</label>
+                    <select class="form-control" formControlName="nomeFornecedor">
+                        <option value="0">Selecione um fornecedor....</option>
+                        <option *ngFor="let fornecedor of fornecedores" [selected]="fornecedor.nome == boleto.nomeFornecedor">
+                            {{fornecedor.nome}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Categoria</label>
+                    <select class="form-control" formControlName="nomeCategoria">
+                        <option value="0">Selecione uma categoria....</option>
+                        <option *ngFor="let cat of categorias" [selected]="cat.nome == boleto.nomeCategoria">
+                            {{cat.nome}}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+                <button *ngIf="!boleto.id" type="submit" class="btn btn-info"
+                    [disabled]="!formulario.valid">Cadastrar!</button>
+                <button *ngIf="boleto.id" type="submit" class="btn btn-info"
+                    [disabled]="!formulario.valid">Atualizar!</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+<notifier-container></notifier-container>
+<!-- /.content -->

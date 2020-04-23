@@ -1,0 +1,64 @@
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <b>Cozinha da Rosa</b>
+        </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Novo Usuário</p>
+
+                <form novalidate [formGroup]="formulario" (submit) = "cadastrar()">
+                    <label class="red-label" *ngIf="erroNome">
+                        <i class="far fa-times-circle"></i> 
+                        {{erroNome}}
+                    </label>
+                    <div class="input-group mb-3">
+                        <input formControlName="nome" type="text" class="form-control" [ngClass]="{'is-invalid': erroNome}" placeholder="Nome">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="red-label" *ngIf="erroEmail">
+                        <i class="far fa-times-circle"></i> 
+                        {{erroEmail}}
+                    </label>
+                    <div class="input-group mb-3">
+                        <input formControlName="email" type="email" class="form-control" [ngClass]="{'is-invalid': erroEmail}" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="red-label" *ngIf="erroSenha">
+                        <i class="far fa-times-circle"></i> 
+                        {{erroSenha}}
+                    </label>
+                    <div class="input-group mb-3">
+                        <input formControlName="senha" type="password" class="form-control" [ngClass]="{'is-invalid': erroSenha}" placeholder="Senha">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <!-- /.col -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary btn-block">Cadastrar!</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+                <a href="#" [routerLink]="['/login']" class="text-center">Já é um membro? Ir para Login</a>
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+    <!-- /.register-box -->
+    <notifier-container></notifier-container>
+</body>
