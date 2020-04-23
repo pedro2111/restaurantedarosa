@@ -37,8 +37,6 @@ export class CalendarioBoletoComponent implements OnInit {
     boletos.forEach((b) => {
       eventos.push({title: b.nome, date: b.dtVencimento })
     });
-    eventos.push({color: '#3c8dbc'})
-    eventos.push({color: 'white'})
     return eventos;
   }
   createEvent(event){
