@@ -2,7 +2,7 @@
   "name": "cozinha-da-rosa",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "ng build --prod --aot",
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
