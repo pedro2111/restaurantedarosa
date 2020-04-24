@@ -5,7 +5,6 @@ import bootstrapPlugin from '@fullcalendar/bootstrap';
 import interactionPlugin from '@fullcalendar/interaction';
 import { BoletoService } from 'src/app/services/boleto.service';
 import { Boleto } from 'src/app/shared/boleto.model';
-import { Calendar } from '@fullcalendar/core';
 import ptLocale from '@fullcalendar/core/locales/pt-br';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 

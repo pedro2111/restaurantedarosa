@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Boleto } from 'src/app/shared/boleto.model';
-import { BoletoResolverGuard } from '../guards/boleto-resolver.guard';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BsDatepickerConfig, BsLocaleService, BsDatepickerDirective } from 'ngx-bootstrap/datepicker'
+import { BsDatepickerConfig, BsLocaleService, BsDatepickerDirective,DatepickerDateCustomClasses } from 'ngx-bootstrap/datepicker'
 import { Categoria } from 'src/app/shared/categoria.model';
 import { Fornecedor } from 'src/app/shared/fornecedores.model';
 import { CategoriaService } from 'src/app/services/categoria.service';
