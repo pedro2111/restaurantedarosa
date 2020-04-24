@@ -89,7 +89,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cozinha-da-rosa:build"
+            "browserTarget": "cozinha-da-rosa:build",
+            "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {
