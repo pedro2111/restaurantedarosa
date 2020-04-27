@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token',res['token']);
       localStorage.setItem('usuario',usuario.email);
       this.error = false;
-      this.router.navigate(['/dashboard/boletos']).then(() => {window.location.reload();})
+      this.router.navigate(['/dashboard']).then(() => {window.location.reload();})
 
       
     }, (err) => {
