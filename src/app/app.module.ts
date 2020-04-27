@@ -32,6 +32,7 @@ import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarioBoletoComponent } from './componentes/boletos/calendario-boleto/calendario-boleto.component'; 
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -116,7 +117,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     CurrencyMaskModule,
     ChartsModule,
     FullCalendarModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    LoadingBarHttpClientModule
 
   ],
   providers: [
