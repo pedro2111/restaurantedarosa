@@ -7,6 +7,7 @@ import { BoletoService } from 'src/app/services/boleto.service';
 import { Boleto } from 'src/app/shared/boleto.model';
 import ptLocale from '@fullcalendar/core/locales/pt-br';
 import { FullCalendarComponent } from '@fullcalendar/angular';
+import * as moment from 'moment';
 
 
 @Component({
@@ -33,8 +34,11 @@ export class CalendarioBoletoComponent implements OnInit {
 
   populaEventos(boletos:Boleto[]){
     let eventos = []
+    let dataVencimento
     boletos.forEach((b) => {
-      eventos.push({title: b.nome, date: b.dtVencimento })
+      dataVencimento = moment(b.dtVencimento, "YYYY-MM-DD").format("YYYY-MM-DD")
+      //console.log(dataVencimento)
+      eventos.push({title: b.nome, date: dataVencimento })
     });
     return eventos;
   }
