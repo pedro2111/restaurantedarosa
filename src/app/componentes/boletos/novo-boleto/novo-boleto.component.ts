@@ -101,6 +101,8 @@ export class NovoBoletoComponent implements OnInit {
     }
   }
   carregaForm(b: Boleto) {
+    let dataFormatada = moment(b.dtVencimento).format("DD-MM-YYYY")
+    //console.log(dataFormatada)
     this.formulario.patchValue({
       id: b.id,
       nome: b.nome,
@@ -109,7 +111,7 @@ export class NovoBoletoComponent implements OnInit {
       nomeUsario: b.nomeUsuario,
       status: b.status,
       dtCriacao: b.dtCriacao,
-      dtVencimento: b.dtVencimento,
+      dtVencimento: dataFormatada,
       valor: b.valor
     });
 

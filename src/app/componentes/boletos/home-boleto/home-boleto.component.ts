@@ -94,9 +94,10 @@ export class HomeBoletoComponent implements OnInit {
     }
   }
   diffDate(boletos: Boleto[]) {
-
+    
     for (let i in boletos) {
-      let dtAtual = moment("2020-04-27", "YYYY-MM-DD")
+      let hoje = moment(new Date()).format("YYYY-MM-DD")
+      let dtAtual = moment(hoje,"YYYY-MM-DD")
       let dtVencimento = moment(boletos[i]['dtVencimento'],"YYYY-MM-DD")
       let diff = moment.duration(dtVencimento.diff(dtAtual))
 

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   totalVencido;
   totalAVencer;
   totalPago;
-  chartType:ChartType = 'bar'
+  chartType:ChartType = 'line'
   dataMesAno = [];
   dataValorTotal = [];
   @ViewChild(BaseChartDirective, { static: true }) chart: BaseChartDirective;
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     { data: this.dataValorTotal, label: 'Valor Total Mensal' }
   ];
   public barChartColors: Color[] = [
-    { backgroundColor: '#17a2b8' },
+    { backgroundColor: 'rgba(23,162,184,0.2)' },
   ]
   constructor(
     private boletoService: BoletoService
