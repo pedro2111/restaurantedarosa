@@ -22,9 +22,9 @@ export class HomeBoletoComponent implements OnInit {
   vencidos: Boleto[] = [];
   vencidosHoje: Boleto[] = [];
   aVencer: Boleto[] = [];
-  totalVencido = 0;
-  totalAvencer = 0;
-  totalVencidoHoje = 0;
+  totalVencido = '0';
+  totalAvencer = '0';
+  totalVencidoHoje = '0';
   filtro: string;
   p;
   ngOnInit() {
@@ -116,7 +116,7 @@ export class HomeBoletoComponent implements OnInit {
     boletos.forEach((b) => {
       total += b.valor;
     })
-    return total;
+    return total.toFixed(2);
   }
   refresh() {
     this.listar();
