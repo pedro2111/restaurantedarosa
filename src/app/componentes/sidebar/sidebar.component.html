@@ -31,13 +31,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="./index2.html" [attr.data-widget]="ismobile" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v2</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="./index3.html" [attr.data-widget]="ismobile" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v3</p>
                 </a>
@@ -47,7 +47,7 @@
         -->
         <!--
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="pages/widgets.html" [attr.data-widget]="ismobile" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Widgets
@@ -73,13 +73,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a [routerLink]="['boletos/novo']" class="nav-link">
+                <a [routerLink]="['boletos/novo']"  [attr.data-widget]="ismobile" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Novo Boleto</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a [routerLink]="['boletos/calendario']" class="nav-link">
+                <a [routerLink]="['boletos/calendario']" [attr.data-widget]="ismobile" class="nav-link">
                   <i class="nav-icon far fa-calendar-alt"></i>
                   <p>Calendário</p>
                 </a>
@@ -97,19 +97,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a [routerLink]="['clientes']" class="nav-link">
+                <a [routerLink]="['clientes']" [attr.data-widget]="ismobile" class="nav-link">
                   <i class="fa fa-home nav-icon"></i>
                   <p>Clientes Home</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">
+                <a [attr.data-widget]="ismobile" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Novo Cliente</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a  class="nav-link">
+                <a  [attr.data-widget]="ismobile" class="nav-link">
                   <i class="nav-icon fa fa-chart-pie"></i>
                   <p>Relatório</p>
                 </a>
@@ -127,25 +127,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a  class="nav-link">
+                <a  [attr.data-widget]="ismobile" class="nav-link">
                   <i class="fa fa-home nav-icon"></i>
                   <p>Fluxo Home</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">
+                <a [attr.data-widget]="ismobile" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Novo Fluxo</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">
+                <a [attr.data-widget]="ismobile" class="nav-link">
                   <i class="nav-icon fa fa-box-open"></i>
                   <p>Abri caixa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">
+                <a [attr.data-widget]="ismobile" class="nav-link">
                   <i class="nav-icon fa fa-chart-pie"></i>
                   <p>Relatório</p>
                 </a>
@@ -153,7 +153,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="" class="nav-link" >
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-truck"></i>
               <p>
                 Fornecedores
@@ -163,13 +163,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" [routerLink]="['/dashboard/fornecedores']" class="nav-link">
+                <a href="" [routerLink]="['/dashboard/fornecedores']" [attr.data-widget]="ismobile" class="nav-link">
                   <i class="fa fa-home nav-icon"></i>
                   <p>Fornecedores Home</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" [routerLink]="['/dashboard/fornecedores/novo']" class="nav-link">
+                <a href="" [routerLink]="['/dashboard/fornecedores/novo']" [attr.data-widget]="ismobile" class="nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Novo Fornecedor</p>
                 </a>
@@ -187,13 +187,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a  class="pointer nav-link" [routerLink]="['/dashboard/categorias']">
+                <a  class="pointer nav-link" [attr.data-widget]="ismobile" [routerLink]="['/dashboard/categorias']">
                   <i class="fa fa-home nav-icon"></i>
                   <p>Categorias Home</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a [routerLink]="['/dashboard/categorias/nova']" class=" pointer nav-link">
+                <a [routerLink]="['/dashboard/categorias/nova']" [attr.data-widget]="ismobile" class=" pointer nav-link">
                   <i class="fa fa-plus nav-icon"></i>
                   <p>Nova Categoria</p>
                 </a>
