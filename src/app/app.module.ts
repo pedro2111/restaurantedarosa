@@ -35,6 +35,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { HomeClienteComponent } from './componentes/clientes/home-cliente/home-cliente.component';
 import { NovoClienteComponent } from './componentes/clientes/novo-cliente/novo-cliente.component';
+import { DetalheClienteComponent } from './componentes/clientes/detalhe-cliente/detalhe-cliente.component';
+
+
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -106,7 +109,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     HomeComponent,
     CalendarioBoletoComponent,
     HomeClienteComponent,
-    NovoClienteComponent
+    NovoClienteComponent,
+    DetalheClienteComponent
   ],
   imports: [
     BrowserModule,

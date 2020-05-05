@@ -18,6 +18,8 @@ import { BoletoResolverGuard } from './componentes/boletos/guards/boleto-resolve
 import { HomeComponent } from './componentes/home/home.component';
 import { CalendarioBoletoComponent } from './componentes/boletos/calendario-boleto/calendario-boleto.component';
 import { HomeClienteComponent } from './componentes/clientes/home-cliente/home-cliente.component';
+import { NovoClienteComponent } from './componentes/clientes/novo-cliente/novo-cliente.component';
+import { DetalheClienteComponent } from './componentes/clientes/detalhe-cliente/detalhe-cliente.component';
 
 
 const routes: Routes = [
@@ -48,7 +50,9 @@ const routes: Routes = [
       {path: 'boletos/editar/:id', component: NovoBoletoComponent,
       resolve:{boletoR: BoletoResolverGuard}},
 
-      {path: 'clientes', component: HomeClienteComponent}
+      {path: 'clientes', component: HomeClienteComponent},
+      {path: 'clientes/novo', component: NovoClienteComponent},
+      {path: 'clientes/detalhe', component: DetalheClienteComponent},
 
     ]}
 ];

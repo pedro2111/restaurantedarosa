@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
     }else{
       this.ismobile = ''
     }
-    console.log(this.ismobile)
+    //console.log(this.ismobile)
   }
 
   detectar_mobile() { 
