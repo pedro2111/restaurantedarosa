@@ -37,8 +37,12 @@ export class CalendarioBoletoComponent implements OnInit {
     let dataVencimento
     boletos.forEach((b) => {
       dataVencimento = moment(b.dtVencimento, "YYYY-MM-DD").format("YYYY-MM-DD")
-      //console.log(dataVencimento)
-      eventos.push({title: b.nome, date: dataVencimento })
+      if(b.status == 'PAGO'){
+        eventos.push({title: b.nome, date: dataVencimento,backgroundColor: '#28a745',textColor:'white' })
+      }else{
+        eventos.push({title: b.nome, date: dataVencimento,backgroundColor: '#dc3545',textColor:'white',borderColor:'#dc3545' })
+      }
+      
     });
     return eventos;
   }
