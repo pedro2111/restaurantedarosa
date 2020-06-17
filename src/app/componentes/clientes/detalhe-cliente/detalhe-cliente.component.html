@@ -20,7 +20,8 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#lancamentos" data-toggle="tab">Lançamentos</a> </li>
+                        <li class="nav-item"><a class="nav-link active" href="#lancamentos"
+                                data-toggle="tab">Lançamentos</a> </li>
                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contas" data-toggle="tab">Contas</a></li>
                     </ul>
@@ -31,7 +32,7 @@
                             <div class="card">
                                 <div class="card-header border-0">
                                     <h3 class="card-title">Conta Aberta</h3><br>
-                                    <h3 class="card-title">Data de Abertura: 01/01/2020</h3>
+                                    <h3 class="card-title">Data de Abertura: {{dt_abertura | slice: 0:11}}</h3>
                                 </div>
                                 <div class="card-body table-responsive p-0">
                                     <table class="table table-striped table-valign-middle">
@@ -40,245 +41,88 @@
                                                 <th>Cliente</th>
                                                 <th>Dt Lançamento</th>
                                                 <th>E/S</th>
-                                                <th>Saldo</th>
-                                                <th>Observações</th>
+                                                <th>Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr *ngFor="let mov of movimentacoes">
                                                 <td>
-                                                    Pedro
+                                                    {{mov.nome}}
                                                 </td>
                                                 <td>
-                                        
-                                                    <span > 06/04/2020 </span>
+
+                                                    <span> {{mov.dt_movimentacao}} </span>
                                                 </td>
                                                 <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 400,00 </span>
+                                                    <div *ngIf="mov.valor < 0">
+                                                        <small class="text-danger mr-1">
+                                                            <i class="fas fa-arrow-down"></i>
+                                                        </small>
+                                                        <span class="text-danger"> R$ {{mov.valor}}</span>
+                                                    </div>
+                                                    <div *ngIf="mov.valor > 0">
+                                                        <small class="text-success mr-1">
+                                                            <i class="fas fa-arrow-up"></i>
+                                                        </small>
+                                                        <span class="text-success"> R$ {{mov.valor}}</span>
+                                                    </div>
+
                                                 </td>
                                                 <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 300,00 </span>
-                                                </td>
-                                                <td>
-                                                    <span class="badge  pointer btn btn-lg btn-success mr-2"
-                                                        data-toggle="modal" data-target="#modal-default"><i
-                                                            class="fas fa-cash-register fa-lg"></i></span>
-                                                    <span class="badge  pointer btn btn-lg btn-info"
-                                                        [routerLink]="['detalhe']"><i
-                                                            class="fas fa-receipt fa-lg"></i></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Pedro
-                                                </td>
-                                                <td>
-                                 
-                                                    <span > 06/04/2020 </span>
-                                                </td>
-                                                <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 400,00 </span>
-                                                </td>
-                                                <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 300,00 </span>
-                                                </td>
-                                                <td>
-                                                    <span class="badge  pointer btn btn-lg btn-success mr-2"
-                                                        data-toggle="modal" data-target="#modal-default"><i
-                                                            class="fas fa-cash-register fa-lg"></i></span>
-                                                    <span class="badge  pointer btn btn-lg btn-info"
-                                                        [routerLink]="['detalhe']"><i
-                                                            class="fas fa-receipt fa-lg"></i></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Pedro
-                                                </td>
-                                                <td>
-                                              
-                                                    <span > 06/04/2020 </span>
-                                                </td>
-                                                <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 400,00 </span>
-                                                </td>
-                                                <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 300,00 </span>
-                                                </td>
-                                                <td>
-                                                    <span class="badge  pointer btn btn-lg btn-success mr-2"
-                                                        data-toggle="modal" data-target="#modal-default"><i
-                                                            class="fas fa-cash-register fa-lg"></i></span>
-                                                    <span class="badge  pointer btn btn-lg btn-info"
-                                                        [routerLink]="['detalhe']"><i
-                                                            class="fas fa-receipt fa-lg"></i></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Pedro
-                                                </td>
-                                                <td>
-                                
-                                                    <span > 06/04/2020 </span>
-                                                </td>
-                                                <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 400,00 </span>
-                                                </td>
-                                                <td>
-                                                    <small class="text-danger mr-1">
-                                                        <i class="fas fa-arrow-down"></i>
-                                                    </small>
-                                                    <span class="text-danger"> R$ 300,00 </span>
-                                                </td>
-                                                <td>
-                                                    <span class="badge  pointer btn btn-lg btn-success mr-2"
-                                                        data-toggle="modal" data-target="#modal-default">
-                                                        <i class="fas fa-cash-register fa-lg" data-toggle="tooltip"
-                                                            data-placement="top" title="Lancar venda!"></i></span>
-                                                    <span class="badge  pointer btn btn-lg btn-info"
-                                                        [routerLink]="['detalhe']">
-                                                        <i class="fas fa-receipt fa-lg" data-toggle="tooltip"
-                                                            data-placement="top" title="Detalhar"></i>
+                                                    <span class="badge  pointer btn btn-lg btn-danger mr-2"
+                                                        (click)="deletar(mov.id)">
+                                                        <i class="fas fa-trash fa-lg"></i>
                                                     </span>
                                                 </td>
                                             </tr>
-
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="card-footer clearfix">
-                                    <span class="float-right">TOTAL: <span class="text-danger"> R$ 1200,00
+                                    <span class="float-right">SALDO: <span class="text-danger"> R$ {{saldoCliente}}
                                         </span></span>
 
                                 </div>
                             </div>
-
-                            <div class="modal fade" id="modal-default">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Lançar Venda</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" id="customRadio1"
-                                                        name="customRadio">
-                                                    <label for="customRadio1"
-                                                        class="custom-control-label text-success">Entrada</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" id="customRadio2"
-                                                        name="customRadio" checked="">
-                                                    <label for="customRadio2"
-                                                        class="custom-control-label text-danger">Saída</label>
-                                                </div>
-                                            </div>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">R$</span>
-                                                </div>
-                                                <input type="text" class="form-control" currencyMask>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Fechar</button>
-                                            <button type="button" class="btn btn-primary"
-                                                data-dismiss="modal">Salvar</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="timeline">
                             <!-- The timeline -->
-                            <div class="timeline timeline-inverse">
-                                <!-- timeline time label -->
-                                <div class="time-label">
-                                    <span class="bg-gray-dark">
-                                        07 Mai. 2020
-                                    </span>
-                                </div>
-                                <!-- /.timeline-label -->
-                                <!-- timeline item -->
-                                <div>
-                                    <div class="timeline-item">
-                                       
-                                        <h3 class="time timeline-header"><a>Saldo: </a> <span class="text-success">R$ 0,00</span></h3>
-                                        <h3 class="timeline-header"><a>Valor: </a> <span class="text-success">R$ 100,00</span></h3>
-
-                                        <div class="timeline-body">
-                                            Observação:<br>
-                                            Conta quitada!
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- timeline time label -->
-                                <div class="time-label">
+                            <div class="timeline timeline-inverse" *ngFor="let mov of movimentacoes">
+    
+                                <div class="time-label" *ngIf="mov.valor > 0">
                                     <span class="bg-success">
-                                        06 Mai. 2020
+                                        {{dt_abertura | slice: 0:11}}
                                     </span>
                                 </div>
-                                <!-- /.timeline-label -->
-                                <!-- timeline item -->
-                                <div>
+                                <div *ngIf="mov.valor > 0">
                                     <div class="timeline-item">
-                                    
-                                        <h3 class="time timeline-header"><a>Saldo: </a> <span class="text-success">R$ 100,00</span></h3>
-                                        <h3 class="timeline-header"><a>Valor: </a> <span class="text-danger">R$ -100,00</span></h3>
+
+                                        <span class="time"><i class="far fa-clock"></i> {{mov.dt_movimentacao | slice: 11:19}}</span>
+                                        <h3 class="timeline-header"><a>Valor: </a> <span class="text-success">R$ {{mov.valor}}</span></h3>
 
                                         <div class="timeline-body">
                                             Observação:<br>
-                                            testeste
+                                            {{mov.observacao}}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="time-label">
+                                <div class="time-label" *ngIf="mov.valor < 0">
                                     <span class="bg-danger">
-                                        04 Mai. 2020
+                                        {{dt_abertura | slice: 0:11}}
                                     </span>
                                 </div>
                                 <!-- /.timeline-label -->
                                 <!-- timeline item -->
-                                <div>
+                                <div *ngIf="mov.valor < 0"> 
                                     <div class="timeline-item">
-                                    
-                                        <h3 class="time timeline-header"><a>Saldo: </a> <span class="text-success">R$ 100,00</span></h3>
-                                        <h3 class="timeline-header"><a>Valor: </a> <span class="text-danger">R$ -100,00</span></h3>
+
+                                        <span class="time"><i class="far fa-clock"></i> {{mov.dt_movimentacao| slice: 11:19}}</span>
+                                        <h3 class="timeline-header"><a>Valor: </a> <span class="text-danger">R$ {{mov.valor}}</span></h3>
 
                                         <div class="timeline-body">
                                             Observação:<br>
-                                            testeste
+                                            {{mov.observacao}}
                                         </div>
                                     </div>
                                 </div>
@@ -301,75 +145,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                            <tr *ngFor="let conta of contas">
                                                 <td>
-                                                    Pedro
+                                                    {{conta.nomeCliente}}
                                                 </td>
                                                 <td>
-                                                    <span > 06/04/2020 </span>
+                                                    <span> {{conta.dt_abertura | slice: 0:11}} </span>
                                                 </td>
                                                 <td>
-                                                    <span > 01/05/2020 </span>
+                                                    <span>  {{conta.dt_fechamento| slice: 0:11}} </span>
                                                 </td>
                                                 <td>
-                                                    <span class="badge  pointer btn btn-lg btn-info"
-                                                        [routerLink]="['detalhe']"><i
-                                                            class="fas fa-receipt fa-lg"></i></span>
+                                                    <span class="badge  pointer btn btn-lg btn-info" (click)="openModalConta(conta.id, templateContaMovimentacao)"><i class="fas fa-receipt fa-lg"></i></span>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="card-footer clearfix">
-                                    <span class="float-right">TOTAL: <span class="text-danger"> R$ 1200,00
-                                        </span></span>
-
-                                </div>
                             </div>
-
-                            <div class="modal fade" id="modal-default">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Lançar Venda</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" id="customRadio1"
-                                                        name="customRadio">
-                                                    <label for="customRadio1"
-                                                        class="custom-control-label text-success">Entrada</label>
-                                                </div>
-                                                <div class="custom-control custom-radio">
-                                                    <input class="custom-control-input" type="radio" id="customRadio2"
-                                                        name="customRadio" checked="">
-                                                    <label for="customRadio2"
-                                                        class="custom-control-label text-danger">Saída</label>
-                                                </div>
-                                            </div>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">R$</span>
-                                                </div>
-                                                <input type="text" class="form-control" currencyMask>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Fechar</button>
-                                            <button type="button" class="btn btn-primary"
-                                                data-dismiss="modal">Salvar</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
                         </div>
                     </div>
                     <!-- /.tab-content -->
@@ -379,3 +172,40 @@
         </div>
     </div>
 </section>
+<ng-template #templateContaMovimentacao>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Extrato da Conta</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="contaModalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table m-0">
+                <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Dt Lançamento</th>
+                  <th>Valor</th>
+                  <th>Observação</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let mov of movimentacoesConta">
+                  <td>{{mov.nome}}</td>
+                  <td>{{mov.dt_movimentacao}}</td>
+                  <td>R$ {{mov.valor}}</td>
+                  <td>{{mov.observacao}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.table-responsive -->
+          </div>
+    </div>
+    <div class="modal-footer">
+        Valor total Saída: R$ {{valorTotalSaida}}
+      </div>
+</ng-template>
+<notifier-container></notifier-container>

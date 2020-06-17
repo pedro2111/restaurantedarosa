@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { URL_API } from '../shared/app.api';
+import { Conta } from '../shared/conta.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,11 @@ export class ContaService {
       headers: headers
     }
     return this.http.put(`${URL_API}/contas/${id}/fecharConta`, {httpOptions})
+  }
+
+  public listarContaCliente(cliente_id){
+
+    return this.http.get<Conta[]>(`${URL_API}/contas/${cliente_id}`)
   }
 
 

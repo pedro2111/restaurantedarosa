@@ -1,8 +1,8 @@
 export class Movimentacao{
  
     nome:String;
-    idMov:number;
-    dt_movimentacao:Date;
+    id:number;
+    dt_movimentacao:String;
     observacao:String;
     tipo:String;
     valor:number;

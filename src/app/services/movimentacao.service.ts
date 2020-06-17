@@ -40,4 +40,16 @@ export class MovimentacaoService {
     return this.http.get(`${URL_API}/movimentacoes/listarClientesContaSemMovimentacoes`)
 
   }
+  listarDetalheClienteMovimentacao(id){
+
+    return this.http.get<Movimentacao[]>(`${URL_API}/movimentacoes/${id}/listarMovimentacoesCliente`)
+  }
+  deletar(id){
+
+    return this.http.delete(`${URL_API}/movimentacoes/${id}`)
+  }
+  listarMovimentacaoConta(id){
+
+    return this.http.get<Movimentacao[]>(`${URL_API}/movimentacoes/conta/${id}`)
+  }
 }

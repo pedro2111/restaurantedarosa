@@ -20,6 +20,7 @@ import { CalendarioBoletoComponent } from './componentes/boletos/calendario-bole
 import { HomeClienteComponent } from './componentes/clientes/home-cliente/home-cliente.component';
 import { NovoClienteComponent } from './componentes/clientes/novo-cliente/novo-cliente.component';
 import { DetalheClienteComponent } from './componentes/clientes/detalhe-cliente/detalhe-cliente.component';
+import { ClienteResolverGuard } from './componentes/clientes/guards/cliente-resolver.guard';
 
 
 const routes: Routes = [
@@ -31,28 +32,24 @@ const routes: Routes = [
       {path: '', component: HomeComponent},
 
       {path: 'fornecedores', component: HomeFornecedorComponent},
-      {path: 'fornecedores/novo', component: NovoFornecedorComponent,
-      resolve:{fornecedor: FornecedorResolverGuard}},
-      {path: 'fornecedores/editar/:id', component: NovoFornecedorComponent,
-      resolve:{fornecedor: FornecedorResolverGuard}},
+      {path: 'fornecedores/novo', component: NovoFornecedorComponent,resolve:{fornecedor: FornecedorResolverGuard}},
+      {path: 'fornecedores/editar/:id', component: NovoFornecedorComponent,resolve:{fornecedor: FornecedorResolverGuard}},
 
       {path: 'categorias', component: HomeCategoriaComponent},
-      {path: 'categorias/nova', component: NovaCategoriaComponent,
-      resolve:{categoriaR: CategoriaResolverGuard}},
-      {path: 'categorias/editar/:id', component: NovaCategoriaComponent,
-      resolve:{categoriaR: CategoriaResolverGuard}},
+      {path: 'categorias/nova', component: NovaCategoriaComponent,resolve:{categoriaR: CategoriaResolverGuard}},
+      {path: 'categorias/editar/:id', component: NovaCategoriaComponent,resolve:{categoriaR: CategoriaResolverGuard}},
       {path: 'pagina-nao-encontrada', component: NotFoundComponent},
 
       {path: 'boletos', component: HomeBoletoComponent},
       {path: 'boletos/calendario', component: CalendarioBoletoComponent},
       {path: 'boletos/novo', component: NovoBoletoComponent,
       resolve:{boletoR: BoletoResolverGuard}},
-      {path: 'boletos/editar/:id', component: NovoBoletoComponent,
-      resolve:{boletoR: BoletoResolverGuard}},
+      {path: 'boletos/editar/:id', component: NovoBoletoComponent,resolve:{boletoR: BoletoResolverGuard}},
 
       {path: 'clientes', component: HomeClienteComponent},
-      {path: 'clientes/novo', component: NovoClienteComponent},
-      {path: 'clientes/detalhe', component: DetalheClienteComponent},
+      {path: 'clientes/novo', component: NovoClienteComponent, resolve:{clienteR: ClienteResolverGuard}},
+      {path: 'clientes/editar/:id', component: NovoClienteComponent, resolve:{clienteR: ClienteResolverGuard}},
+      {path: 'clientes/:id/detalhe', component: DetalheClienteComponent},
 
     ]}
 ];
