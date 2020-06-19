@@ -29,7 +29,8 @@ export class BoletoResolverGuard implements Resolve<Boleto> {
       nomeFornecedor: null,
       status: null,
       dtVencimento: null,
-      valor: null
+      valor: null,
+      diff:null
     });
 
   }

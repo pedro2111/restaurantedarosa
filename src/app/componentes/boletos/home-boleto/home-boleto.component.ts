@@ -32,7 +32,7 @@ export class HomeBoletoComponent implements OnInit {
     this.listarAVencer();
     this.listarVencidos();
     this.listarVencidosHoje();
-    
+
 
   }
 
@@ -94,11 +94,11 @@ export class HomeBoletoComponent implements OnInit {
     }
   }
   diffDate(boletos: Boleto[]) {
-    
+
     for (let i in boletos) {
       let hoje = moment(new Date()).format("YYYY-MM-DD")
-      let dtAtual = moment(hoje,"YYYY-MM-DD")
-      let dtVencimento = moment(boletos[i]['dtVencimento'],"YYYY-MM-DD")
+      let dtAtual = moment(hoje, "YYYY-MM-DD")
+      let dtVencimento = moment(boletos[i]['dtVencimento'], "YYYY-MM-DD")
       let diff = moment.duration(dtVencimento.diff(dtAtual))
 
       boletos[i]['diff'] = diff.asDays();
@@ -108,6 +108,18 @@ export class HomeBoletoComponent implements OnInit {
       //console.log('boleto: ' + boletos[i]['diff'])
 
     }
+    boletos.sort((a, b) => {
+      if (a.status != 'PAGO') { 
+        if (a.diff > b.diff) {
+          return 1;
+        }
+        if (a.diff < b.diff) {
+          return -1;
+        }
+        return 0;
+      }
+
+    })
     return boletos;
 
   }

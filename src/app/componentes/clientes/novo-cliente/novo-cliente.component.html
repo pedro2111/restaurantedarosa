@@ -10,6 +10,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#" [routerLink]="['/']" >Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="#" [routerLink]="['/dashboard/clientes']">Home Cliente</a></li>
               <li class="breadcrumb-item active" *ngIf="!cliente.id">Novo cliente</li>
               <li class="breadcrumb-item active" *ngIf="cliente.id">Atualizar cliente</li>
             </ol>

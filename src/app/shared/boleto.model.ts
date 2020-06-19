@@ -8,4 +8,5 @@ export class Boleto{
     dtCriacao:Date;
     dtVencimento:Date;
     valor:number;
+    diff:number;
 }

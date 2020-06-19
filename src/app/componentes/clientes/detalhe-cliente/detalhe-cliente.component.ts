@@ -62,6 +62,7 @@ export class DetalheClienteComponent implements OnInit {
 
   formatarMovimentacoes(movimentacoes: Movimentacao[]) {
     this.valorTotalSaida = 0
+    this.saldoCliente = 0
     movimentacoes.forEach((mov) => {
       let dtFormatada
       dtFormatada = formataData(mov.dt_movimentacao)
