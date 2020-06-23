@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BoletoService } from 'src/app/services/boleto.service';
 import { Router, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 import { Boleto } from 'src/app/shared/boleto.model';
@@ -27,17 +27,31 @@ export class HomeBoletoComponent implements OnInit {
   totalVencidoHoje = '0';
   filtro: string;
   p;
+  page=0;
+  size=10;
+  totalElementos;
+
   ngOnInit() {
-    this.listar();
+    this.listar(this.page,this.size);
+    //this.listarTodosBoletos();
     this.listarAVencer();
     this.listarVencidos();
     this.listarVencidosHoje();
-
-
   }
 
-  listar() {
-    this.boletoService.listar().subscribe(
+  getPage(page){
+    this.page = page - 1;
+    this.listar(this.page,this.size);
+  }
+
+  listar(page,size) {
+    this.boletoService.listar(page,size).subscribe(
+      (res) => { console.log(this.totalElementos = res['totalElements']),this.boletos = this.diffDate(res['content']) },
+      (err) => this.error403(err)
+    );
+  }
+  listarTodosBoletos() {
+    this.boletoService.listarTodosBoletos().subscribe(
       (res) => { this.boletos = this.diffDate(res) },
       (err) => this.error403(err)
     );
@@ -95,6 +109,8 @@ export class HomeBoletoComponent implements OnInit {
   }
   diffDate(boletos: Boleto[]) {
 
+    let boletosPagos:Boleto[];
+
     for (let i in boletos) {
       let hoje = moment(new Date()).format("YYYY-MM-DD")
       let dtAtual = moment(hoje, "YYYY-MM-DD")
@@ -102,14 +118,12 @@ export class HomeBoletoComponent implements OnInit {
       let diff = moment.duration(dtVencimento.diff(dtAtual))
 
       boletos[i]['diff'] = diff.asDays();
-      //console.log('data atual' + dtAtual)
-      //console.log('data vencimento' + dtVencimento)
-      //console.log('diferenca: ' + diff.asDays())
-      //console.log('boleto: ' + boletos[i]['diff'])
-
     }
+    boletosPagos = boletos.filter((filtrados) => {return filtrados.status == 'PAGO'})
+    boletos = boletos.filter((filtrados) => {return filtrados.status != 'PAGO'})
+
     boletos.sort((a, b) => {
-      if (a.status != 'PAGO') { 
+   
         if (a.diff > b.diff) {
           return 1;
         }
@@ -117,10 +131,9 @@ export class HomeBoletoComponent implements OnInit {
           return -1;
         }
         return 0;
-      }
-
+      
     })
-    return boletos;
+    return boletos.concat(boletosPagos);
 
   }
   calculaTotal(boletos: Boleto[]) {
@@ -131,12 +144,14 @@ export class HomeBoletoComponent implements OnInit {
     return total.toFixed(2);
   }
   refresh() {
-    this.listar();
+    this.listar(this.page,this.size);
+    //this.listarTodosBoletos();
     this.listarAVencer();
     this.listarVencidos();
     this.listarVencidosHoje();
   }
   filtroBoletos() {
+    
     if (this.boletos.length === 0 || this.filtro === undefined || this.filtro.trim() === '') {
       return this.boletos
     }
@@ -147,4 +162,6 @@ export class HomeBoletoComponent implements OnInit {
       return false;
     });
   }
+
+
 }

@@ -12,8 +12,11 @@ export class BoletoService {
     private http: HttpClient
   ) { }
 
-  public listar() {
-    return this.http.get<Boleto[]>(`${URL_API}/boletos`);
+  public listar(page,size) {
+    return this.http.get<Boleto[]>(`${URL_API}/boletos?page=${page}&size=${size}&sort=status,asc&sort=id,desc`);
+  }
+  public listarTodosBoletos(){
+    return this.http.get<Boleto[]>(`${URL_API}/boletos/listarBoletos`);
   }
 
   public listarVencidos(){

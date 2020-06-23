@@ -28,7 +28,7 @@ export class CalendarioBoletoComponent implements OnInit {
   eventos = [];
 
   ngOnInit() {
-    this.boletoService.listar().subscribe((res) => this.eventos = this.populaEventos(res))
+    this.boletoService.listarTodosBoletos().subscribe((res) => this.eventos = this.populaEventos(res))
     
   }
 

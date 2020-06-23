@@ -112,9 +112,7 @@
     </h3>
 
     <div class="card-tools">
-      <pagination-controls class="pagination pagination-sm no-margin pull-right" (pageChange)="p = $event"
-        previousLabel="Anterior" nextLabel="Próximo">
-      </pagination-controls>
+      <pagination-controls class="pagination pagination-sm no-margin pull-right" (pageChange)="p = $event" (pageChange)="getPage($event)" previousLabel="Anterior" nextLabel="Próximo"> </pagination-controls>
     </div>
 
     <div class="card-tools mr-2">
@@ -136,7 +134,7 @@
   <!-- /.card-header -->
   <div class="card-body">
     <ul class="todo-list ui-sortable" data-widget="todo-list">
-      <li *ngFor="let b of filtroBoletos() | paginate: { itemsPerPage: 10, currentPage: p }"
+      <li *ngFor="let b of filtroBoletos() | paginate: { itemsPerPage: 10, currentPage: p, totalItems:totalElementos}"
         [ngClass]="{'done': b.status == 'PAGO'}">
         <!-- drag handle -->
         <span class="handle ui-sortable-handle">
